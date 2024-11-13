@@ -1,9 +1,10 @@
 import 'package:flutter/material.dart';
-import 'package:wisata_candi_wahyu/data/candi_data.dart';
-import 'package:wisata_candi_wahyu/screens/detail_screen.dart';
-import 'package:wisata_candi_wahyu/screens/profile_screen.dart';
-import 'package:wisata_candi_wahyu/screens/sign_in_screen.dart';
-import 'package:wisata_candi_wahyu/screens/sign_up_screen.dart';
+import 'package:wisata_candi_fahri/data/candi_data.dart';
+import 'package:wisata_candi_fahri/screens/detail_screen.dart';
+import 'package:wisata_candi_fahri/screens/profile_screen.dart';
+import 'package:wisata_candi_fahri/screens/search_screens.dart';
+import 'package:wisata_candi_fahri/screens/sign_in_screen.dart';
+import 'package:wisata_candi_fahri/screens/sign_up_screen.dart';
 
 void main() {
   runApp(const MainApp());
@@ -35,7 +36,8 @@ class MainApp extends StatelessWidget {
       //Home : DetailScreen(candi: candiList[0]),
       //Home : const ProfileScreen(),
       // home: SignInScreen(),
-      home: SignUpScreen(),
+      // home: SignUpScreen(),
+      home: SearchScreens(),
     );
   }
 }

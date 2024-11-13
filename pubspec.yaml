@@ -1,10 +1,10 @@
-name: wisata_candi_wahyu
+name: wisata_candi_fahri
 description: "A new Flutter project."
 publish_to: 'none'
 version: 0.1.0
 
 environment:
-  sdk: ^3.5.2
+  sdk: ^3.22.3
 
 dependencies:
   flutter:
