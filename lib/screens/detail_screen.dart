@@ -1,4 +1,3 @@
-
 import 'package:cached_network_image/cached_network_image.dart';
 import 'package:flutter/material.dart';
 import 'package:wisata_candi_fahri/models/candi.dart';
@@ -36,7 +35,9 @@ class DetailScreen extends StatelessWidget {
                       shape: BoxShape.circle,
                     ),
                     child: IconButton(
-                      onPressed: () {},
+                      onPressed: () {
+                        Navigator.pop(context);
+                      },
                       icon: const Icon(Icons.arrow_back),
                     ),
                   ),
@@ -190,24 +191,23 @@ class DetailScreen extends StatelessWidget {
                                       ),
                                     ),
                                     child: ClipRRect(
-                                      borderRadius: BorderRadius.circular(10),
-                                      child: CachedNetworkImage(
+                                        borderRadius: BorderRadius.circular(10),
+                                        child: CachedNetworkImage(
                                           imageUrl: candi.imageUrls[index],
                                           width: 120,
                                           height: 120,
-                                          fit : BoxFit.cover,
-                                          placeholder: (context, 
-                                          url) => Container(
+                                          fit: BoxFit.cover,
+                                          placeholder: (context, url) =>
+                                              Container(
                                             width: 120,
                                             height: 120,
                                             color: Colors.deepPurple[50],
                                           ),
-                                          errorWidget: (context, url, error) => 
-                                          const Icon(
+                                          errorWidget: (context, url, error) =>
+                                              const Icon(
                                             Icons.error,
                                           ),
-                                      )
-                                    ),
+                                        )),
                                   ),
                                 ),
                               );
