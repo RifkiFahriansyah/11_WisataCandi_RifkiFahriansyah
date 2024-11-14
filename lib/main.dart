@@ -90,6 +90,9 @@ class _MainScreenState extends State<MainScreen> {
               label: "Profile",
             ),
           ],
+          selectedItemColor: Colors.deepPurple,
+          unselectedItemColor: Colors.deepPurple[100],
+          showUnselectedLabels: true,
         ),
       ),
       // TODO 4. Buat data dan child dari Theme
