@@ -18,7 +18,7 @@ class MainApp extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
-      title: "Wisata Candi",
+      title: "Wisata Candi",  
       theme: ThemeData(
         appBarTheme: const AppBarTheme(
           iconTheme: IconThemeData(color: Colors.deepPurple),
@@ -35,7 +35,13 @@ class MainApp extends StatelessWidget {
         ),
         useMaterial3: true,
       ),
-      home: MainScreen(),
+      home: SignUpScreen(),
+      initialRoute: '/',
+      routes: {
+        '/homescreen' : (context) => const HomeScreen(),
+        '/signin' : (context) => SignInScreen(),
+        '/signup' : (context) => SignUpScreen(),
+      },
     );
   }
 }
@@ -51,10 +57,10 @@ class _MainScreenState extends State<MainScreen> {
   // TODO 1. Deklarasikan Variabel
   int _currentIndex = 0;
   final List<Widget> _children = [
-    HomeScreen(),
-    SearchScreens(),
-    FavoriteScreen(),
-    ProfileScreen(),
+    const HomeScreen(),
+    const SearchScreens(),
+    const FavoriteScreen(),
+    const ProfileScreen(),
   ];
   @override
   Widget build(BuildContext context) {

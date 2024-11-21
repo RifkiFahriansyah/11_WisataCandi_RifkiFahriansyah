@@ -17,9 +17,10 @@ class _ProfileScreenState extends State<ProfileScreen> {
 
   // TODO: 5. Implementasi Fungsi SIGN IN
   void signIn() {
-    setState(() {
-      isSignedIn = !isSignedIn;
-    });
+    // setState(() {
+    //   isSignedIn = !isSignedIn;
+    // });
+    Navigator.pushNamed(context, '/signin');
   }
 
   // TODO: 6. Implementasi Fungsi SIGN OUT
@@ -66,7 +67,7 @@ class _ProfileScreenState extends State<ProfileScreen> {
                               ),
                             ),
                             if (isSignedIn)
-                              IconButton(
+                              const IconButton(
                                 onPressed: null,
                                 icon: Icon(
                                   Icons.camera_alt,
@@ -79,20 +80,20 @@ class _ProfileScreenState extends State<ProfileScreen> {
                     ),
                   ),
                 ),
-                SizedBox(
+                const SizedBox(
                   height: 20,
                 ),
                 Divider(
                   color: Colors.deepPurple[200],
                 ),
-                SizedBox(
+                const SizedBox(
                   height: 4,
                 ),
                 Row(
                   children: [
                     SizedBox(
                       width: MediaQuery.of(context).size.width / 3,
-                      child: Row(
+                      child: const Row(
                         children: [
                           Icon(
                             Icons.lock,
@@ -118,13 +119,13 @@ class _ProfileScreenState extends State<ProfileScreen> {
                     ))
                   ],
                 ),
-                SizedBox(
+                const SizedBox(
                   height: 4,
                 ),
                 Divider(
                   color: Colors.deepPurple[100],
                 ),
-                SizedBox(
+                const SizedBox(
                   height: 4,
                 ),
                 // Row(
@@ -167,7 +168,7 @@ class _ProfileScreenState extends State<ProfileScreen> {
                     debugPrint('Icon Edit Ditekan;');
                   },
                 ),
-                SizedBox(
+                const SizedBox(
                   height: 4,
                 ),
                 Divider(
@@ -186,14 +187,14 @@ class _ProfileScreenState extends State<ProfileScreen> {
                     onEditPressed: () {
                       debugPrint('Icon Edit Ditekan;');
                     }),
-                    // TODO 4. Buat ProfileAction yg berisi TextButton Sign in/out
-                SizedBox(
+                // TODO 4. Buat ProfileAction yg berisi TextButton Sign in/out
+                const SizedBox(
                   height: 4,
                 ),
                 Divider(
                   color: Colors.deepPurple[100],
                 ),
-                SizedBox(
+                const SizedBox(
                   height: 20,
                 ),
                 isSignedIn

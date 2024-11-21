@@ -2,6 +2,8 @@ import 'package:flutter/material.dart';
 import 'package:flutter/gestures.dart';
 import 'dart:ui';
 
+import 'package:shared_preferences/shared_preferences.dart';
+
 class SignUpScreen extends StatefulWidget {
   SignUpScreen({super.key});
 
@@ -18,6 +20,44 @@ class _SignUpScreenState extends State<SignUpScreen> {
   String _errorText = "";
   bool _isSignedIn = false;
   bool _obscurePassword = false;
+
+  //TODO 1. membuat fungsi _signUp
+  void _signUp() async {
+    final SharedPreferences prefs = await SharedPreferences.getInstance();
+    String name = _nameController.text.trim();
+    String username = _usernameController.text.trim();
+    String password = _passwordController.text.trim();
+    if (password.length < 8 ||
+        // Tidak mengandung huruf besar A-Z
+        !password.contains(RegExp(r'[A-Z]')) ||
+        // Tidak mengandung huruf kecil a-z
+        !password.contains(RegExp(r'[a-z]')) ||
+        // Tidak mengandung angka 0-9
+        !password.contains(RegExp(r'[0-9]')) ||
+        // Tidak mengandung karakter khusus
+        !password.contains(RegExp(r'[@#$%^&*(),.?":{}|<>]'))) {
+      // Password invalid
+
+      setState(() {
+        (_errorText =
+            "Password harus minimal 8 karakter, mengandung huruf besar, huruf kecil, angka, dan karakter khusus");
+        return;
+      });
+      prefs.setString('fulname', name);
+      prefs.setString('username', username);
+      prefs.setString('password', password);
+      Navigator.pushNamed(context, '/signin');
+    }
+  }
+
+  //TODO 2. membuat fungsi dispose
+  void dispose() {
+    //TODO: Implement Dispose
+    super.dispose();
+    _nameController.dispose();
+    _usernameController.dispose();
+    _passwordController.dispose();
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -84,7 +124,7 @@ class _SignUpScreenState extends State<SignUpScreen> {
                   height: 20,
                 ),
                 ElevatedButton(
-                  onPressed: () {},
+                  onPressed: () {_signUp();},
                   child: const Text("Sign Up"),
                 ),
                 //TODO 8. Pasang TextButton Sign Up
@@ -107,7 +147,9 @@ class _SignUpScreenState extends State<SignUpScreen> {
                           decoration: TextDecoration.underline,
                           fontSize: 16,
                         ),
-                        recognizer: TapGestureRecognizer()..onTap = () {},
+                        recognizer: TapGestureRecognizer()..onTap = () {
+                          Navigator.pushNamed(context, '/signin');
+                        },
                       )
                     ],
                   ),

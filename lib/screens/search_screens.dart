@@ -11,15 +11,15 @@ class SearchScreens extends StatefulWidget {
 
 class _SearchScreensState extends State<SearchScreens> {
   // TODO: 1. Deklarasikan variabel yg dibutuhkan
-  List<Candi> _filteredCandis = candiList;
-  String _searchQuery = '';
+  final List<Candi> _filteredCandis = candiList;
+  final String _searchQuery = '';
   final TextEditingController _searchController = TextEditingController();
   @override
   Widget build(BuildContext context) {
     return Scaffold(
       //TODO: 2. Buat appbar dengan judul Pencarian Candi
       appBar: AppBar(
-        title: Text('Pencarian Candi'),
+        title: const Text('Pencarian Candi'),
       ),
       //TODO: 3. Buat body berupa column
       body: Column(
@@ -56,12 +56,12 @@ class _SearchScreensState extends State<SearchScreens> {
                 final candi = _filteredCandis[index];
                 //TODO: 8. Implementasi gestureDetector dan Hero animation 
                 return Card(
-                  margin: EdgeInsets.symmetric(horizontal: 16, vertical: 4),
+                  margin: const EdgeInsets.symmetric(horizontal: 16, vertical: 4),
                   child: Row(
                     crossAxisAlignment: CrossAxisAlignment.start,
                     children: [
                       Container(
-                        padding: EdgeInsets.all(8),
+                        padding: const EdgeInsets.all(8),
                         width: 100,
                         height: 100,
                         child: ClipRRect(
@@ -86,7 +86,7 @@ class _SearchScreensState extends State<SearchScreens> {
                                 fontWeight: FontWeight.bold,
                               ),
                             ),
-                            SizedBox(height: 4,),
+                            const SizedBox(height: 4,),
                             Text(
                               candi.location,
                               ),
