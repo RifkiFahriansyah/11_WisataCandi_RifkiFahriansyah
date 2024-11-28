@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/gestures.dart';
 import 'dart:ui';
+import 'package:encrypt/encrypt.dart' as encrypt;
 
 import 'package:shared_preferences/shared_preferences.dart';
 
@@ -47,6 +48,23 @@ class _SignUpScreenState extends State<SignUpScreen> {
       prefs.setString('username', username);
       prefs.setString('password', password);
       Navigator.pushNamed(context, '/signin');
+    }
+    // TODO 3. Jika name, username, password tidak kosong lakukan enkripsi
+    if (name.isNotEmpty && username.isNotEmpty && password.isNotEmpty) {
+      final encrypt.Key key = encrypt.Key.fromLength(32);
+      final iv = encrypt.IV.fromLength(16);
+
+      final Encrypter = encrypt.Encrypter(encrypt.AES(key));
+      final encryptedName = Encrypter.encrypt(name, iv: iv);
+      final encryptedUsername = Encrypter.encrypt(username, iv: iv);
+      final encryptedPassword = Encrypter.encrypt(password, iv: iv);
+
+      // Simpan data pengguna di SharedPreferences
+      prefs.setString('fulname', encryptedName.base64);
+      prefs.setString('username', encryptedUsername.base64);
+      prefs.setString('password', encryptedPassword.base64);
+      prefs.setString('key', key.base64);
+      prefs.setString('iv', iv.base64);
     }
   }
 
@@ -124,7 +142,9 @@ class _SignUpScreenState extends State<SignUpScreen> {
                   height: 20,
                 ),
                 ElevatedButton(
-                  onPressed: () {_signUp();},
+                  onPressed: () {
+                    _signUp();
+                  },
                   child: const Text("Sign Up"),
                 ),
                 //TODO 8. Pasang TextButton Sign Up
@@ -147,9 +167,10 @@ class _SignUpScreenState extends State<SignUpScreen> {
                           decoration: TextDecoration.underline,
                           fontSize: 16,
                         ),
-                        recognizer: TapGestureRecognizer()..onTap = () {
-                          Navigator.pushNamed(context, '/signin');
-                        },
+                        recognizer: TapGestureRecognizer()
+                          ..onTap = () {
+                            Navigator.pushNamed(context, '/signin');
+                          },
                       )
                     ],
                   ),
