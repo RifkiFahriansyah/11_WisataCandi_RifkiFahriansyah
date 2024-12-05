@@ -4,7 +4,7 @@ import 'package:wisata_candi_fahri/screens/detail_screen.dart';
 import 'package:wisata_candi_fahri/screens/favorite_screen.dart';
 import 'package:wisata_candi_fahri/screens/home_screen.dart';
 import 'package:wisata_candi_fahri/screens/profile_screen.dart';
-import 'package:wisata_candi_fahri/screens/search_screens.dart';
+import 'package:wisata_candi_fahri/screens/search_screen.dart';
 import 'package:wisata_candi_fahri/screens/sign_in_screen.dart';
 import 'package:wisata_candi_fahri/screens/sign_up_screen.dart';
 
@@ -18,7 +18,7 @@ class MainApp extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
-      title: "Wisata Candi",  
+      title: "Wisata Candi",
       theme: ThemeData(
         appBarTheme: const AppBarTheme(
           iconTheme: IconThemeData(color: Colors.deepPurple),
@@ -35,12 +35,12 @@ class MainApp extends StatelessWidget {
         ),
         useMaterial3: true,
       ),
-      home: SignUpScreen(),
+      home: MainScreen(),
       initialRoute: '/',
       routes: {
-        '/homescreen' : (context) => const HomeScreen(),
-        '/signin' : (context) => SignInScreen(),
-        '/signup' : (context) => SignUpScreen(),
+        '/homescreen': (context) => const HomeScreen(),
+        '/signin': (context) => SignInScreen(),
+        '/signup': (context) => SignUpScreen(),
       },
     );
   }
@@ -58,7 +58,7 @@ class _MainScreenState extends State<MainScreen> {
   int _currentIndex = 0;
   final List<Widget> _children = [
     const HomeScreen(),
-    const SearchScreens(),
+    const SearchScreen(),
     const FavoriteScreen(),
     const ProfileScreen(),
   ];
@@ -73,10 +73,11 @@ class _MainScreenState extends State<MainScreen> {
           canvasColor: Colors.deepPurple[50],
         ),
         child: BottomNavigationBar(
-          currentIndex: _currentIndex, onTap: (index) {
-          setState(() {
-            _currentIndex = index;
-          });
+          currentIndex: _currentIndex,
+          onTap: (index) {
+            setState(() {
+              _currentIndex = index;
+            });
           },
           items: const [
             BottomNavigationBarItem(

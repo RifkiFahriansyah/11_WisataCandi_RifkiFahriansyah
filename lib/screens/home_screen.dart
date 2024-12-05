@@ -16,11 +16,12 @@ class _HomeScreenState extends State<HomeScreen> {
       //TODO 1. Buat appBar dengan judul wisata Candi
       appBar: AppBar(
         title: const Text("Wisata Candi"),
+        automaticallyImplyLeading: false,
       ),
       //TODO 2. Buat body dengan GridView.builder
       body: GridView.builder(
-          gridDelegate:
-              const SliverGridDelegateWithFixedCrossAxisCount(crossAxisCount: 2),
+          gridDelegate: const SliverGridDelegateWithFixedCrossAxisCount(
+              crossAxisCount: 2),
           padding: const EdgeInsets.all(8),
           itemCount: candiList.length,
           itemBuilder: (context, index) {

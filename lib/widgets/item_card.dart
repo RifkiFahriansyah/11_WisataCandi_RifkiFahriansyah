@@ -17,13 +17,14 @@ class _ItemCardState extends State<ItemCard> {
     //TODO 6. Implementasi Routing ke DetailScreen
     return InkWell(
       onTap: () {
-        Navigator.push(context, MaterialPageRoute(builder:(context) => DetailScreen(candi: widget.candi)));
+        Navigator.push(
+            context,
+            MaterialPageRoute(
+                builder: (context) => DetailScreen(candi: widget.candi)));
       },
       child: Card(
         //TODO 2. Tetapkan parameter shape, margin, dan elevation dari cari
-        shape: RoundedRectangleBorder(
-          borderRadius: BorderRadius.circular(15)
-        ),
+        shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(15)),
         margin: EdgeInsets.all(4),
         elevation: 1,
         child: Column(
@@ -32,13 +33,15 @@ class _ItemCardState extends State<ItemCard> {
             //TODO 3. Buat image sebagai anak dari column
             Expanded(
               // TODO 7. Implementasi Hero Animation
-              child: ClipRRect(
-                borderRadius: BorderRadius.circular(15),
-                child: Image.asset(
-                  widget.candi.imageAsset,
-                  width: double.infinity,
-                  fit: BoxFit.cover,
-                  ),
+              child: Hero(
+                tag: widget.candi.imageAsset,
+                child: ClipRRect(
+                    borderRadius: BorderRadius.circular(15),
+                    child: Image.asset(
+                      widget.candi.imageAsset,
+                      width: double.infinity,
+                      fit: BoxFit.cover,
+                    )),
               ),
             ),
             //TODO 4. Buat text sebagai anak dari column
@@ -57,9 +60,7 @@ class _ItemCardState extends State<ItemCard> {
               padding: const EdgeInsets.only(left: 16, top: 8),
               child: Text(
                 widget.candi.type,
-                style: const TextStyle(
-                  fontSize: 12
-                ),
+                style: const TextStyle(fontSize: 12),
               ),
             )
           ],
